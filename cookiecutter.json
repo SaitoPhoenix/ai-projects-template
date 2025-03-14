@@ -11,6 +11,9 @@
         {"s3": {"bucket": "bucket-name", "aws_profile": "default"}},
         {"gcs": {"bucket": "bucket-name"}}
     ],
+    "llm": [
+        "openai"
+    ],
     "environment_manager": [
         "virtualenv",
         "conda",
@@ -25,6 +28,21 @@
     "pydata_packages": [
         "none",
         "basic"
+    ],
+    "ai_packages": [
+        "none",
+        "basic"
+    ],
+    "formatting": [
+        "ruff",
+        "black",
+        "none"
+    ],
+    "linting": [
+        "ruff",
+        "flake8",
+        "pylint",
+        "none"
     ],
     "open_source_license": ["No license file", "MIT", "BSD-3-Clause"],
     "docs": ["mkdocs", "none"],
