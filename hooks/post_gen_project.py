@@ -2,40 +2,71 @@ import shutil
 from copy import copy
 from pathlib import Path
 
-packages = [
-    "black",
-    "flake8",
-    "isort",
-    "pip",
-    "python-dotenv",
-    "ipykernel",    
+
+
+fomatter_pkg_a = [
+    "ruff", # for formatting code
+]
+
+fomatter_pkg_b = [
+    "black", # for formatting code
+    "isort", # for sorting imports
+]
+
+linter_pkg_a = [
+    "ruff", # for linting code
+]
+
+linter_pkg_b = [
+    "flake8", # for linting code
+]
+
+linter_pkg_c = [
+    "pylint", # for linting code
 ]
 
 basic = [
-    "ipython",
-    "jupyterlab",
-    "matplotlib",
-    "notebook",
-    "numpy",
-    "pandas",
-    "scikit-learn",
+    "pip", # for installing packages
+    "python-dotenv", # for loading environment variables
+    "ipykernel", # for Interactive Jupyter notebooks   
+    "loguru", # for logging
+    "tqdm", # for progress bars    
+    "typer", # for building CLIs    
 ]
 
-scaffold = [
-    "typer",
-    "loguru",
-    "tqdm",
+notebooks = [
+    "ipython", # for interactive Python
+    "jupyterlab", # for Jupyter notebooks
+    "matplotlib", # for plotting
+    "notebook", # for Jupyter notebooks
+]
+data_science = [
+    "numpy", # for numerical computing
+    "pandas", # for data manipulation
+    "scipy", # for scientific computing
+]
+
+machine_learning = [
+    "scikit-learn", # for machine learning
 ]
 
 ai_packages_basic = [
-    "requests",
-    "pydantic",
-    "httpx",
-    "docling",
-    "streamlit",
-    "tiktoken",
-    "instructor",
-    "langchain",    
+    "pydantic", # for data validation
+    "requests", # for making HTTP requests
+    "streamlit", # for building web apps
+    "instructor", # for training models
+    "langchain", # for chaining models      
+]
+
+ai_packages_plusChunking = [
+    "pydantic", # for data validation
+    "requests", # for making HTTP requests
+    "streamlit", # for building web apps
+    "instructor", # for training models
+    "langchain", # for chaining models      
+    "httpx", # for making HTTP requests
+    "docling", # for parsing HTML    
+    "tiktoken", # for tokenizing text 
 ]
 
 def write_dependencies(
@@ -82,11 +113,13 @@ def write_dependencies(
 #
 #  TEMPLATIZED VARIABLES FILLED IN BY COOKIECUTTER
 #
-packages_to_install = copy(packages)
+packages_to_install = copy(basic)
 
-# {% if cookiecutter.LLM.openai %}
+# {% if cookiecutter.llm == "openai" %}
 packages_to_install += ["openai"]
 # {% endif %} #
+
+# {% if cookiecutter.fomatter == "black" %}
 
 # {% if cookiecutter.include_code_scaffold == "Yes" %}
 packages_to_install += scaffold

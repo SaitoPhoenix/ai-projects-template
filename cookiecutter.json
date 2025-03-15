@@ -12,7 +12,8 @@
         {"gcs": {"bucket": "bucket-name"}}
     ],
     "llm": [
-        "openai"
+        "openai",
+        "none"
     ],
     "environment_manager": [
         "virtualenv",
@@ -25,13 +26,14 @@
         "environment.yml",
         "Pipfile"
     ],
-    "pydata_packages": [
-        "none",
-        "basic"
-    ],
+    "include_notebook_packages": ["Yes", "No"],
+    "include_data_science_packages": ["Yes", "No"],
+    "include_machine_learning_packages": ["Yes", "No"],
+
     "ai_packages": [
         "none",
-        "basic"
+        "basic",
+        "plusChunking"
     ],
     "formatting": [
         "ruff",
@@ -46,5 +48,26 @@
     ],
     "open_source_license": ["No license file", "MIT", "BSD-3-Clause"],
     "docs": ["mkdocs", "none"],
-    "include_code_scaffold": ["Yes", "No"]
+    "include_code_scaffold": ["Yes", "No"],
+    "__prompts__": {
+        "project_name": "The name of the project.",        
+        "repo_name": "The name of the repository.",        
+        "module_name": "The name of the module.",        
+        "author_name": "The name of the author.",
+        "description": "A short description of the project.",
+        "python_version_number": "The version of Python to use.",
+        "dataset_storage": "The storage service to use for datasets.",
+        "llm": "The LLM Library to use.",
+        "environment_manager": "The environment manager to use.",
+        "dependency_file": "The dependency file to use.",
+        "include_notebook_packages": "Include packages for Jupyter notebooks?",
+        "include_data_science_packages": "Include packages for data science?",
+        "include_machine_learning_packages": "Include packages for machine learning?",
+        "ai_packages": "The AI packages to include.",
+        "formatting": "The code formatting tool to use.",
+        "linting": "The code linting tool to use.",
+        "open_source_license": "The open-source license to use.",
+        "docs": "The documentation tool to use.",
+        "include_code_scaffold": "Include a code scaffold?"        
+    }
 }
