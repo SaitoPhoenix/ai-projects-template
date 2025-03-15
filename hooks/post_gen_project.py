@@ -3,71 +3,50 @@ from copy import copy
 from pathlib import Path
 
 
-
-fomatter_pkg_a = [
-    "ruff", # for formatting code
-]
-
-fomatter_pkg_b = [
-    "black", # for formatting code
-    "isort", # for sorting imports
-]
-
-linter_pkg_a = [
-    "ruff", # for linting code
-]
-
-linter_pkg_b = [
-    "flake8", # for linting code
-]
-
-linter_pkg_c = [
-    "pylint", # for linting code
-]
-
 basic = [
-    "pip", # for installing packages
-    "python-dotenv", # for loading environment variables
-    "ipykernel", # for Interactive Jupyter notebooks   
-    "loguru", # for logging
-    "tqdm", # for progress bars    
-    "typer", # for building CLIs    
+    "pip",  # for installing packages
+    "python-dotenv",  # for loading environment variables
+    "ipykernel",  # for Interactive Jupyter notebooks
+    "loguru",  # for logging
+    "tqdm",  # for progress bars
+    "typer",  # for building CLIs
 ]
 
-notebooks = [
-    "ipython", # for interactive Python
-    "jupyterlab", # for Jupyter notebooks
-    "matplotlib", # for plotting
-    "notebook", # for Jupyter notebooks
+notebook = [
+    "ipython",  # for interactive Python
+    "jupyterlab",  # for Jupyter notebooks
+    "matplotlib",  # for plotting
+    "notebook",  # for Jupyter notebooks
 ]
 data_science = [
-    "numpy", # for numerical computing
-    "pandas", # for data manipulation
-    "scipy", # for scientific computing
+    "numpy",  # for numerical computing
+    "pandas",  # for data manipulation
+    "scipy",  # for scientific computing
 ]
 
 machine_learning = [
-    "scikit-learn", # for machine learning
+    "scikit-learn",  # for machine learning
 ]
 
 ai_packages_basic = [
-    "pydantic", # for data validation
-    "requests", # for making HTTP requests
-    "streamlit", # for building web apps
-    "instructor", # for training models
-    "langchain", # for chaining models      
+    "pydantic",  # for data validation
+    "requests",  # for making HTTP requests
+    "streamlit",  # for building web apps
+    "instructor",  # for training models
+    "langchain",  # for chaining models
 ]
 
 ai_packages_plusChunking = [
-    "pydantic", # for data validation
-    "requests", # for making HTTP requests
-    "streamlit", # for building web apps
-    "instructor", # for training models
-    "langchain", # for chaining models      
-    "httpx", # for making HTTP requests
-    "docling", # for parsing HTML    
-    "tiktoken", # for tokenizing text 
+    "pydantic",  # for data validation
+    "requests",  # for making HTTP requests
+    "streamlit",  # for building web apps
+    "instructor",  # for training models
+    "langchain",  # for chaining models
+    "httpx",  # for making HTTP requests
+    "docling",  # for parsing HTML
+    "tiktoken",  # for tokenizing text
 ]
+
 
 def write_dependencies(
     dependencies, packages, pip_only_packages, repo_name, module_name, python_version
@@ -76,7 +55,7 @@ def write_dependencies(
         with open(dependencies, "w") as f:
             lines = sorted(packages)
 
-            lines += ["" "-e ."]
+            lines += ["-e ."]
 
             f.write("\n".join(lines))
             f.write("\n")
@@ -110,23 +89,55 @@ def write_dependencies(
 
             f.write("\n".join(lines))
 
+
 #
 #  TEMPLATIZED VARIABLES FILLED IN BY COOKIECUTTER
 #
-packages_to_install = copy(basic)
+packages_to_install = basic
+
+# {% if cookiecutter.formatter == "ruff" %}
+packages_to_install += ["ruff"]
+# {% endif %} #
+
+# {% if cookiecutter.formatter == "black" %}
+packages_to_install += ["black"]
+packages_to_install += ["isort"]
+# {% endif %} #
+
+# {% if cookiecutter.linter == "ruff" %}
+packages_to_install += ["ruff"]
+# {% endif %} #
+
+# {% if cookiecutter.linter == "flake8" %}
+packages_to_install += ["flake8"]
+# {% endif %} #
+
+# {% if cookiecutter.linter == "pylint" %}
+packages_to_install += ["pylint"]
+# {% endif %} #
 
 # {% if cookiecutter.llm == "openai" %}
 packages_to_install += ["openai"]
 # {% endif %} #
 
-# {% if cookiecutter.fomatter == "black" %}
-
-# {% if cookiecutter.include_code_scaffold == "Yes" %}
-packages_to_install += scaffold
+# {% if cookiecutter.include_notebook_packages == "Yes" %}
+packages_to_install += notebook
 # {% endif %}
 
-# {% if cookiecutter.pydata_packages == "basic" %}
-packages_to_install += basic
+# {% if cookiecutter.include_data_science_packages == "Yes" %}
+packages_to_install += data_science
+# {% endif %}
+
+# {% if cookiecutter.include_machine_learning_packages == "Yes" %}
+packages_to_install += machine_learning
+# {% endif %}
+
+# {% if cookiecutter.ai_packages == "basic" %}
+packages_to_install += ai_packages_basic
+# {% endif %}
+
+# {% if cookiecutter.ai_packages == "plusChunking" %}
+packages_to_install += ai_packages_plusChunking
 # {% endif %}
 
 # track packages that are not available through conda

@@ -35,12 +35,12 @@
         "basic",
         "plusChunking"
     ],
-    "formatting": [
+    "formatter": [
         "ruff",
         "black",
         "none"
     ],
-    "linting": [
+    "linter": [
         "ruff",
         "flake8",
         "pylint",
@@ -64,8 +64,8 @@
         "include_data_science_packages": "Include packages for data science?",
         "include_machine_learning_packages": "Include packages for machine learning?",
         "ai_packages": "The AI packages to include.",
-        "formatting": "The code formatting tool to use.",
-        "linting": "The code linting tool to use.",
+        "fomatter": "The code formatting tool to use.",
+        "linter": "The code linting tool to use.",
         "open_source_license": "The open-source license to use.",
         "docs": "The documentation tool to use.",
         "include_code_scaffold": "Include a code scaffold?"        
