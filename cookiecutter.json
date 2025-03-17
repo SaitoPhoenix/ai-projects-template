@@ -12,7 +12,6 @@
     "environment_manager": [
         "conda",
         "virtualenv",
-        "pipenv",
         "none"
     ],
     "dependency_file": [
