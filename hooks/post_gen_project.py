@@ -3,6 +3,7 @@ from pathlib import Path
 
 
 basic = {
+    "pip": False,
     "python-dotenv": True,  # for loading environment variables
     "ipykernel": True,  # for Interactive Jupyter notebooks
     "loguru": True,  # for logging
@@ -51,7 +52,7 @@ ai_packages_plusChunking = {
 #  indicating whether the package should be installed via pip
 #
 
-packages = {}
+packages = basic.copy()
 
 packages["pip"] = False
 
