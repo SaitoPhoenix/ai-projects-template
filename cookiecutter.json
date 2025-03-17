@@ -49,7 +49,6 @@
         "author_name": "The name of the author.",
         "description": "A short description of the project.",
         "python_version_number": "The version of Python to use.",
-        "dataset_storage": "The storage service to use for datasets.",
         "llm": "The LLM Library to use.",
         "environment_manager": "The environment manager to use.",
         "dependency_file": "The dependency file to use.",
