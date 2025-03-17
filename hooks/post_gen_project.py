@@ -77,17 +77,6 @@ def write_dependencies(
 
             f.write("\n".join(lines))
 
-    elif dependencies == "Pipfile":
-        with open(dependencies, "w") as f:
-            lines = ["[packages]"]
-            lines += [f'{p} = "*"' for p in sorted(packages)]
-
-            lines += [f'"{module_name}" ={{editable = true, path = "."}}']
-
-            lines += ["", "[requires]", f'python_version = "{python_version}"']
-
-            f.write("\n".join(lines))
-
 
 #
 #  TEMPLATIZED VARIABLES FILLED IN BY COOKIECUTTER
