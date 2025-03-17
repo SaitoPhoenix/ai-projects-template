@@ -27,11 +27,10 @@ exclude = '''
 )/
 '''
 
-[tool.ruff.lint.isort]
-known-first-party = ["{{ cookiecutter.module_name }}"]
-force-sort-within-sections = true
+[tool.ruff]
 line-length = 120
-target-version = "py312"
+
+[tool.ruff.lint]
 select = [
     "ALL", # include all the rules, including new ones
 ]
@@ -67,3 +66,7 @@ ignore = [
     "TD003",
     "FIX002", # too verbose descriptions of todos
 ]
+
+[tool.ruff.lint.isort]
+known-first-party = ["{{ cookiecutter.module_name }}"]
+force-sort-within-sections = true
